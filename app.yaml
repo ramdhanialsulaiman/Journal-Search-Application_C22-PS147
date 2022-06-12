@@ -1,0 +1,11 @@
+#app.yaml
+runtime: python37
+env : standard
+entrypoint: gunicorn -b :$PORT main:app
+instance_class: F2
+
+#env_variables:
+#  CLOUD_SQL_USERNAME: 
+#  CLOUD_SQL_PASSWORD: 
+#  CLOUD_SQL_DATABASE_NAME: 
+#  CLOUD_SQL_CONNECTION_NAME:

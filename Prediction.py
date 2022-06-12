@@ -5,8 +5,6 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-model = tf.keras.models.model_load('my_model.h5')
-
 vocab_size = 10000
 embedding_dim = 64
 max_length = 200
@@ -20,6 +18,9 @@ nltk.download("stopwords")
 from nltk.corpus import stopwords
 import re
 STOPWORDS = set(stopwords.words('english'))
+
+model=tf.keras.models.load_model("my_model.h5")
+
 
 print(tf.__version__)
 
@@ -39,8 +40,6 @@ def seq_pad_and_trunc(titles, padding, truncating, maxlen):
     titles = tokenizer.texts_to_sequences(titles)
     pad_trunc_sequences = pad_sequences(titles, maxlen=maxlen, truncating=truncating,padding=padding)
     return pad_trunc_sequences
-
-model = tf.keras.models.load_model('/content/my_model.h5')
 
 def predict(title, padding_type, trunc_type, max_length):
   class_names = ['teknik','kesehatan','ekonomi','hukum']
